@@ -16,30 +16,37 @@ public class Player : MonoBehaviour
     private Rigidbody2D myRigidbody;
     private Animator myAnimator;
     [SerializeField] private ParticleSystem myParticleSystem;
+    #endregion
+
+    #region UI Canvas Variables
+    [SerializeField] private RawImage image;
+    [SerializeField] private float x = 0.01f;
     private float playerAltitude;
     [SerializeField] TMP_Text altitudeText;
     #endregion
 
-    #region Other variables
-    [SerializeField] private RawImage image;
-    [SerializeField] private float x = 0.01f;
+    #region 
 
     #endregion
-    // Start is called before the first frame update
+
+
+    #region Unity Functions
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         JetpackThurst();
         Glide();
         TrackAltitude();
         MoveBackground();
     }
+    #endregion
+
+    #region Player Functions
 
     private void MoveBackground()
     {
@@ -78,7 +85,6 @@ public class Player : MonoBehaviour
             myParticleSystem.Stop();
         }
     }
-
     private void Glide()
     {
         //If Left Shift is pressed AND Jetpack is NOT active, then lower gravity and glide.
@@ -95,4 +101,5 @@ public class Player : MonoBehaviour
             myAnimator.SetBool("IsGliding", false) ;
         }
     }
+    #endregion
 }
