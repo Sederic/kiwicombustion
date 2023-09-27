@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    #region Player Variables
+    #region Player Fly Variables
     [SerializeField] private float thurstForce;
     [SerializeField] private float forwardThrust;
     [SerializeField] private float glideEffect;
@@ -23,6 +23,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float x = 0.01f;
     private float playerAltitude;
     [SerializeField] TMP_Text altitudeText;
+    [SerializeField] Slider overheatSlider;
+    private float jetpackOverheat;
+    [SerializeField] float overheatRate;
+    [SerializeField] float cooldownRate;
     #endregion
 
     #region 
@@ -35,6 +39,7 @@ public class Player : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        jetpackOverheat = 0;
     }
 
     void FixedUpdate()
@@ -43,6 +48,7 @@ public class Player : MonoBehaviour
         Glide();
         TrackAltitude();
         MoveBackground();
+        Overheat();
     }
     #endregion
 
@@ -75,7 +81,7 @@ public class Player : MonoBehaviour
             jetpackActive = true;
             myAnimator.SetBool("IsFlying", true);
             myParticleSystem.Play();
-            
+            jetpackOverheat += overheatRate;
         }
         else
         {
@@ -83,8 +89,21 @@ public class Player : MonoBehaviour
             jetpackActive = false;
             myAnimator.SetBool("IsFlying", false);
             myParticleSystem.Stop();
+            jetpackOverheat -= cooldownRate;
         }
     }
+
+    private void Overheat()
+    {
+        overheatSlider.value = jetpackOverheat;
+        if (jetpackOverheat >= 1)
+        {
+            //Explode
+            Debug.Log("BOOM! You exploded!");
+            Destroy(gameObject);
+        }
+    }
+
     private void Glide()
     {
         //If Left Shift is pressed AND Jetpack is NOT active, then lower gravity and glide.

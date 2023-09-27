@@ -20,7 +20,6 @@ public class LevelSlider : MonoBehaviour
         thisSlider = GetComponent<Slider>();
         levelStartX = player.transform.position.x;  
         levelEndX = endPoint.transform.position.x;
-        Debug.Log("Level Starts: " + levelStartX + " Level Ends: " + levelEndX);
     }
     // Update is called once per frame
     void FixedUpdate()
