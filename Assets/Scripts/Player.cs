@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -19,6 +20,11 @@ public class Player : MonoBehaviour
     [SerializeField] TMP_Text altitudeText;
     #endregion
 
+    #region Other variables
+    [SerializeField] private RawImage image;
+    [SerializeField] private float x = 0.01f;
+
+    #endregion
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +38,15 @@ public class Player : MonoBehaviour
         JetpackThurst();
         Glide();
         TrackAltitude();
+        MoveBackground();
+    }
+
+    private void MoveBackground()
+    {
+        if (myRigidbody.velocity.x > 0) 
+        {
+            image.uvRect = new Rect(image.uvRect.position + new Vector2(x, 0) * Time.deltaTime, image.uvRect.size);
+        }
     }
 
     private void TrackAltitude()
@@ -53,6 +68,7 @@ public class Player : MonoBehaviour
             jetpackActive = true;
             myAnimator.SetBool("IsFlying", true);
             myParticleSystem.Play();
+            
         }
         else
         {

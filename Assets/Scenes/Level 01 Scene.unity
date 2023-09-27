@@ -5864,6 +5864,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1785809065 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7688324761012281053, guid: fd6bafaa27b670e408b9aa1209c1790c, type: 3}
+  m_PrefabInstance: {fileID: 7688324761441228404}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1843161782 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7688324761085492418, guid: fd6bafaa27b670e408b9aa1209c1790c, type: 3}
@@ -6256,6 +6267,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1843161782}
     - target: {fileID: 3506760042551283772, guid: 280a3b87df4668d4c9001ce12d7cb415, type: 3}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 1785809065}
+    - target: {fileID: 3506760042551283772, guid: 280a3b87df4668d4c9001ce12d7cb415, type: 3}
       propertyPath: glideEffect
       value: 0.5
       objectReference: {fileID: 0}
@@ -6573,7 +6588,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Canvas
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7688324761012281052, guid: fd6bafaa27b670e408b9aa1209c1790c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fd6bafaa27b670e408b9aa1209c1790c, type: 3}
 --- !u!1001 &8462984523118370439
 PrefabInstance:
