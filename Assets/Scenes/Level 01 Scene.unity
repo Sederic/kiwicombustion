@@ -928,7 +928,7 @@ PrefabInstance:
       objectReference: {fileID: 1843161782}
     - target: {fileID: 3506760042551283772, guid: 280a3b87df4668d4c9001ce12d7cb415, type: 3}
       propertyPath: cooldownRate
-      value: 0.0018
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 3506760042551283772, guid: 280a3b87df4668d4c9001ce12d7cb415, type: 3}
       propertyPath: overheatRate
@@ -999,6 +999,18 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1985275758}
+    - target: {fileID: 7084755695847670602, guid: 9a7bde4c6b4bf4e469c1a62fbc7f2470, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -75.547066
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084755695921594149, guid: 9a7bde4c6b4bf4e469c1a62fbc7f2470, type: 3}
+      propertyPath: m_FollowOffset.x
+      value: 10.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084755696055158661, guid: 9a7bde4c6b4bf4e469c1a62fbc7f2470, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -75.547066
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a7bde4c6b4bf4e469c1a62fbc7f2470, type: 3}
 --- !u!1001 &7688324761441228404
@@ -1127,6 +1139,14 @@ PrefabInstance:
     - target: {fileID: 7688324761171840245, guid: fd6bafaa27b670e408b9aa1209c1790c, type: 3}
       propertyPath: m_Name
       value: Player UI Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688324761171840247, guid: fd6bafaa27b670e408b9aa1209c1790c, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688324761171840247, guid: fd6bafaa27b670e408b9aa1209c1790c, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd6bafaa27b670e408b9aa1209c1790c, type: 3}

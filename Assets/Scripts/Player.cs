@@ -89,7 +89,14 @@ public class Player : MonoBehaviour
             jetpackActive = false;
             myAnimator.SetBool("IsFlying", false);
             myParticleSystem.Stop();
-            jetpackOverheat -= cooldownRate;
+            if (jetpackOverheat >= cooldownRate)
+            {
+                jetpackOverheat -= cooldownRate;
+            }
+            else
+            {
+                jetpackOverheat = 0;
+            }
         }
     }
 
