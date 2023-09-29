@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        // added when commented out glide
+        myRigidbody.gravityScale = standardPlayerGravity;
         myAnimator = GetComponent<Animator>();
         jetpackOverheat = 0;
     }
@@ -45,7 +47,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         JetpackThurst();
-        Glide();
+        //Glide();
         TrackAltitude();
         MoveBackground();
         Overheat();
@@ -107,25 +109,25 @@ public class Player : MonoBehaviour
         {
             //Explode
             Debug.Log("BOOM! You exploded!");
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
-    private void Glide()
-    {
-        //If Left Shift is pressed AND Jetpack is NOT active, then lower gravity and glide.
-        if (Input.GetKey(KeyCode.LeftShift) && !jetpackActive)
-        {
-            myRigidbody.gravityScale = glideEffect;
-            myRigidbody.velocity = new Vector2(forwardThrust, 0);
-            myAnimator.SetBool("IsGliding", true);
-        }
-        else
-        {
+    // private void Glide()
+    //{
+    //    //If Left Shift is pressed AND Jetpack is NOT active, then lower gravity and glide.
+    //    if (Input.GetKey(KeyCode.LeftShift) && !jetpackActive)
+    //    {
+    //        myRigidbody.gravityScale = glideEffect;
+     //       myRigidbody.velocity = new Vector2(forwardThrust, 0);
+     //       myAnimator.SetBool("IsGliding", true);
+      //  }
+      //  else
+      //  {
         // if Left-Shift is not being pressed, then gravity is normal
-            myRigidbody.gravityScale = standardPlayerGravity;
-            myAnimator.SetBool("IsGliding", false) ;
-        }
-    }
+        //    myRigidbody.gravityScale = standardPlayerGravity;
+          //  myAnimator.SetBool("IsGliding", false) ;
+       // }
+    //}
     #endregion
 }
