@@ -26,6 +26,14 @@
 # Visual Studio cache directory
 .vs/
 
+/Lazer Defender
+/Delivery Driver
+/Quiz Master
+/Tilevania
+/Snow Boarder
+/kiwicombustion-danielpngo
+/kiwicombustion-main
+
 # Gradle cache directory
 .gradle/
 
