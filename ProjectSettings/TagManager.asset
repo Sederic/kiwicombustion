@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - MoveTrigger
   - HitTrigger
+  - Ceiling
+  - Cloud
   layers:
   - Default
   - TransparentFX

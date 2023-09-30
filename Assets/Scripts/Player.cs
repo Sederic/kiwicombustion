@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D myRigidbody;
     private Animator myAnimator;
     [SerializeField] private ParticleSystem myParticleSystem;
+    public bool end;
     #endregion
 
     #region UI Canvas Variables
@@ -24,7 +25,7 @@ public class Player : MonoBehaviour
     private float playerAltitude;
     [SerializeField] TMP_Text altitudeText;
     [SerializeField] Slider overheatSlider;
-    private float jetpackOverheat;
+    public float jetpackOverheat;
     [SerializeField] float overheatRate;
     [SerializeField] float cooldownRate;
     #endregion
@@ -42,15 +43,24 @@ public class Player : MonoBehaviour
         myRigidbody.gravityScale = standardPlayerGravity;
         myAnimator = GetComponent<Animator>();
         jetpackOverheat = 0;
+        end = false;
     }
 
     void FixedUpdate()
     {
-        JetpackThurst();
-        //Glide();
-        TrackAltitude();
-        MoveBackground();
-        Overheat();
+        if (!end)
+        {
+            JetpackThurst();
+            //Glide();
+            TrackAltitude();
+            MoveBackground();
+            Overheat();
+        }
+        else
+        {
+            Stop();
+            TrackAltitude();
+        }
     }
     #endregion
 
@@ -111,6 +121,15 @@ public class Player : MonoBehaviour
             Debug.Log("BOOM! You exploded!");
             gameObject.SetActive(false);
         }
+    }
+
+    private void Stop()
+    {
+        Debug.Log("Stopping");
+        enabled = false;
+        myAnimator.SetBool("IsFlying", false);
+        myRigidbody.gravityScale = 10f;
+        myRigidbody.velocity = Vector3.zero;
     }
 
     // private void Glide()

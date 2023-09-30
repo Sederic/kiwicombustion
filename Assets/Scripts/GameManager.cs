@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+
+
     #region Scene Management
     public void GameScene()
     {
@@ -35,5 +38,6 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
     #endregion
+
 
 }
