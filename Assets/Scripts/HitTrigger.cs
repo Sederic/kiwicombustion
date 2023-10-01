@@ -12,6 +12,7 @@ public class HitTrigger : MonoBehaviour
             Debug.Log("Player is hit");
             // Explode player or something
             Player player = collision.GetComponent<Player>();
+            player.Explode();
             player.gameObject.SetActive(false);
         }
     }

@@ -5,7 +5,40 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Start Menu.unity
+    guid: 80a584be84bf20f4db7769f893d35e4e
+  - enabled: 1
+    path: Assets/Scenes/Credits Scene.unity
+    guid: 6bfb34b94ea43684ab18331494d2f05e
+  - enabled: 1
+    path: Assets/Scenes/Story Scene.unity
+    guid: 6f1f5a2b0b621d84f89fb360b33a2a38
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Level 01 Scene.unity
+    guid: e0727b05c108b974997885405fa3b819
+  - enabled: 1
+    path: Assets/Scenes/Level 02 Scene.unity
+    guid: 19b60b2fd8b211540b931921921edf8b
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Level 03 Scene.unity
+    guid: 1367df4bb51013b469e99b094cf22808
+  - enabled: 1
+    path: Assets/Scenes/Lose Scene.unity
+    guid: e88c5875221edf1409494e267a92d9a6
+  - enabled: 1
+    path: Assets/Scenes/Win Scene.unity
+    guid: 4b61a60c6c4d471419a1bfd42fda99da
   m_configObjects: {}

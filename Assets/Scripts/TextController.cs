@@ -16,4 +16,6 @@ public class TextController : MonoBehaviour
             index++;
         }
     }
+
+    
 }

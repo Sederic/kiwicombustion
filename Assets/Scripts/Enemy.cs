@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     private float newZScale;
     Rigidbody2D enemyRB;
     private Vector3 initialScale;
+    [SerializeField] AudioSource enemyAudio;
 
 
     // Start is called before the first frame update
@@ -61,6 +62,7 @@ public class Enemy : MonoBehaviour
             isChasing = true;
             player = other.transform;
             Debug.Log("Player spotted");
+            enemyAudio.Play();
         }
     }
 

@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private Animator myAnimator;
     [SerializeField] private ParticleSystem myParticleSystem;
     public bool end;
+    [SerializeField] float heightLimit;
     #endregion
 
     #region UI Canvas Variables
@@ -30,8 +31,10 @@ public class Player : MonoBehaviour
     [SerializeField] float cooldownRate;
     #endregion
 
-    #region 
-
+    #region Audio_Variables
+    [SerializeField] AudioSource jetpackAudio;
+    [SerializeField] AudioSource explodeAudio;
+    [SerializeField] float audioFadeSpeed;
     #endregion
 
 
@@ -44,6 +47,23 @@ public class Player : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         jetpackOverheat = 0;
         end = false;
+        StartCoroutine(UpdateAltitude());
+    }
+
+    private IEnumerator UpdateAltitude()
+    {
+        while (!end)
+        {
+
+
+            RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 5), Vector2.down);
+            if (hit.collider != null && hit.collider.transform.tag == "Ground")
+            {
+                playerAltitude = Mathf.Abs(hit.point.y - transform.position.y);
+                altitudeText.text = "Altitude: \n   " + Mathf.Round(playerAltitude);
+            }
+            yield return new WaitForSeconds(0f);
+        }
     }
 
     void FixedUpdate()
@@ -52,14 +72,12 @@ public class Player : MonoBehaviour
         {
             JetpackThurst();
             //Glide();
-            TrackAltitude();
             MoveBackground();
             Overheat();
         }
         else
         {
             Stop();
-            TrackAltitude();
         }
     }
     #endregion
@@ -89,11 +107,21 @@ public class Player : MonoBehaviour
         //if Space Bar is being pressed then cause jetpack thrust (& set jetpackActive to true)
         if (Input.GetKey(KeyCode.Space))
         {
+            if (playerAltitude > heightLimit)
+            {
+                jetpackOverheat = Mathf.Lerp(jetpackOverheat, 1, 0.05f);
+            }
+
+            jetpackAudio.volume = Mathf.Lerp(jetpackAudio.volume, 1.0f, Time.deltaTime * audioFadeSpeed);
             myRigidbody.AddForce(new Vector3 (forwardThrust, thurstForce,0));
             jetpackActive = true;
             myAnimator.SetBool("IsFlying", true);
             myParticleSystem.Play();
             jetpackOverheat += overheatRate;
+            if (!jetpackAudio.isPlaying)
+            {
+                jetpackAudio.Play();
+            }
         }
         else
         {
@@ -101,6 +129,11 @@ public class Player : MonoBehaviour
             jetpackActive = false;
             myAnimator.SetBool("IsFlying", false);
             myParticleSystem.Stop();
+            jetpackAudio.volume = Mathf.Lerp(jetpackAudio.volume, 0.0f, Time.deltaTime * audioFadeSpeed);
+            if (jetpackAudio.volume < 0.1f )
+            {
+                jetpackAudio.Stop();
+            }
             if (jetpackOverheat >= cooldownRate)
             {
                 jetpackOverheat -= cooldownRate;
@@ -132,21 +165,40 @@ public class Player : MonoBehaviour
         myRigidbody.velocity = Vector3.zero;
     }
 
-    // private void Glide()
-    //{
-    //    //If Left Shift is pressed AND Jetpack is NOT active, then lower gravity and glide.
-    //    if (Input.GetKey(KeyCode.LeftShift) && !jetpackActive)
-    //    {
-    //        myRigidbody.gravityScale = glideEffect;
-     //       myRigidbody.velocity = new Vector2(forwardThrust, 0);
-     //       myAnimator.SetBool("IsGliding", true);
-      //  }
-      //  else
-      //  {
-        // if Left-Shift is not being pressed, then gravity is normal
-        //    myRigidbody.gravityScale = standardPlayerGravity;
-          //  myAnimator.SetBool("IsGliding", false) ;
-       // }
-    //}
+
+    #endregion
+
+    #region Death_Functions
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Ground") || collision.transform.CompareTag("Enemy"))
+        {
+            Explode();
+        }
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.CompareTag("Cloud"))
+        {
+            cooldownRate *= 2;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.transform.CompareTag("Cloud"))
+        {
+            cooldownRate /= 2;
+        }
+    }
+
+    public void Explode()
+    {
+        explodeAudio.volume = Mathf.Lerp(explodeAudio.volume, 1.0f, Time.deltaTime * audioFadeSpeed);
+        Debug.Log("Explode!!!");
+        explodeAudio.Play();
+    }
     #endregion
 }

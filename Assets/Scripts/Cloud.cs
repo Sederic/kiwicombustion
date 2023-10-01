@@ -25,7 +25,6 @@ public class Cloud : MonoBehaviour
                     player.jetpackOverheat = 0;
                 }
                 Debug.Log("Cooldown");
-                gameObject.SetActive(false);
             }
         }
     }
