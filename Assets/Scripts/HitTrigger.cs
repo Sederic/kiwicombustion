@@ -5,15 +5,12 @@ using UnityEngine;
 public class HitTrigger : MonoBehaviour
 {
     #region Functions
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.transform.CompareTag("Player"))
         {
-            Debug.Log("Player is hit");
             // Explode player or something
-            Player player = collision.GetComponent<Player>();
-            player.Explode();
-            player.gameObject.SetActive(false);
+            Player player = collision.gameObject.GetComponent<Player>();
         }
     }
     #endregion

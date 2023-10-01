@@ -4326,7 +4326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 169543351583115139, guid: 280a3b87df4668d4c9001ce12d7cb415, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 169543351583115139, guid: 280a3b87df4668d4c9001ce12d7cb415, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4388,6 +4388,10 @@ PrefabInstance:
       propertyPath: overheatSlider
       value: 
       objectReference: {fileID: 268977387}
+    - target: {fileID: 3506760042551283772, guid: 280a3b87df4668d4c9001ce12d7cb415, type: 3}
+      propertyPath: explosionPrefab
+      value: 
+      objectReference: {fileID: 7135894344871253974, guid: 27a8a242a3a22a747a08f72d4bd8e2eb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 280a3b87df4668d4c9001ce12d7cb415, type: 3}
 --- !u!1001 &7084755694991294101
@@ -4453,6 +4457,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -75.547066
       objectReference: {fileID: 0}
+    - target: {fileID: 7084755695847670602, guid: 9a7bde4c6b4bf4e469c1a62fbc7f2470, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.718849
+      objectReference: {fileID: 0}
     - target: {fileID: 7084755695921594149, guid: 9a7bde4c6b4bf4e469c1a62fbc7f2470, type: 3}
       propertyPath: m_FollowOffset.x
       value: 10.84
@@ -4460,6 +4468,10 @@ PrefabInstance:
     - target: {fileID: 7084755696055158661, guid: 9a7bde4c6b4bf4e469c1a62fbc7f2470, type: 3}
       propertyPath: m_LocalPosition.x
       value: -75.547066
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084755696055158661, guid: 9a7bde4c6b4bf4e469c1a62fbc7f2470, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.718849
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a7bde4c6b4bf4e469c1a62fbc7f2470, type: 3}

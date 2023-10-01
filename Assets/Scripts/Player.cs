@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class Player : MonoBehaviour
     [SerializeField] private ParticleSystem myParticleSystem;
     public bool end;
     [SerializeField] float heightLimit;
+    [SerializeField] GameObject explosionPrefab;
+    private bool exploded = false;
     #endregion
 
     #region UI Canvas Variables
@@ -35,6 +38,7 @@ public class Player : MonoBehaviour
     [SerializeField] AudioSource jetpackAudio;
     [SerializeField] AudioSource explodeAudio;
     [SerializeField] float audioFadeSpeed;
+    
     #endregion
 
 
@@ -171,7 +175,7 @@ public class Player : MonoBehaviour
     #region Death_Functions
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("Ground") || collision.transform.CompareTag("Enemy"))
+        if (collision.transform.CompareTag("Ground") || collision.transform.CompareTag("Enemy") && !exploded)
         {
             Explode();
         }
@@ -196,9 +200,18 @@ public class Player : MonoBehaviour
 
     public void Explode()
     {
-        explodeAudio.volume = Mathf.Lerp(explodeAudio.volume, 1.0f, Time.deltaTime * audioFadeSpeed);
-        Debug.Log("Explode!!!");
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         explodeAudio.Play();
+        enabled = false;
+        myRigidbody.freezeRotation = !myRigidbody.freezeRotation;
+        exploded = true;
+        StartCoroutine(LoadNextLevel());
+    }
+
+    IEnumerator LoadNextLevel()
+    {
+        yield return new WaitForSeconds(4);
+        SceneManager.LoadScene("Lose Scene");
     }
     #endregion
 }

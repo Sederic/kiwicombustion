@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
     bool chased = false;
     private float newZScale;
     Rigidbody2D enemyRB;
-    private Vector3 initialScale;
     [SerializeField] AudioSource enemyAudio;
 
 

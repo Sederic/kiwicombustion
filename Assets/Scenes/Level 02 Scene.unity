@@ -2619,6 +2619,10 @@ PrefabInstance:
       propertyPath: overheatSlider
       value: 
       objectReference: {fileID: 268977387}
+    - target: {fileID: 3506760042551283772, guid: 280a3b87df4668d4c9001ce12d7cb415, type: 3}
+      propertyPath: explosionPrefab
+      value: 
+      objectReference: {fileID: 7135894344871253974, guid: 27a8a242a3a22a747a08f72d4bd8e2eb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 280a3b87df4668d4c9001ce12d7cb415, type: 3}
 --- !u!1001 &7084755694991294101
