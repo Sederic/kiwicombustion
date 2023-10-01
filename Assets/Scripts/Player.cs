@@ -59,7 +59,6 @@ public class Player : MonoBehaviour
         while (!end)
         {
 
-
             RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 5), Vector2.down);
             if (hit.collider != null && hit.collider.transform.tag == "Ground")
             {
@@ -75,7 +74,6 @@ public class Player : MonoBehaviour
         if (!end)
         {
             JetpackThurst();
-            //Glide();
             MoveBackground();
             Overheat();
         }
@@ -154,9 +152,7 @@ public class Player : MonoBehaviour
         overheatSlider.value = jetpackOverheat;
         if (jetpackOverheat >= 1)
         {
-            //Explode
-            Debug.Log("BOOM! You exploded!");
-            gameObject.SetActive(false);
+            Explode();
         }
     }
 

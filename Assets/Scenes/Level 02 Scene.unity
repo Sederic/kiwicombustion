@@ -2612,9 +2612,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 341738647}
     - target: {fileID: 3506760042551283772, guid: 280a3b87df4668d4c9001ce12d7cb415, type: 3}
+      propertyPath: thurstForce
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506760042551283772, guid: 280a3b87df4668d4c9001ce12d7cb415, type: 3}
       propertyPath: altitudeText
       value: 
       objectReference: {fileID: 1843161782}
+    - target: {fileID: 3506760042551283772, guid: 280a3b87df4668d4c9001ce12d7cb415, type: 3}
+      propertyPath: cooldownRate
+      value: 0.0014
+      objectReference: {fileID: 0}
     - target: {fileID: 3506760042551283772, guid: 280a3b87df4668d4c9001ce12d7cb415, type: 3}
       propertyPath: overheatSlider
       value: 
